@@ -33,10 +33,18 @@
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
 
-      fetch(form.action, {
+      var data = {};
+      new FormData(form).forEach(function (value, key) {
+        data[key] = value;
+      });
+
+      fetch('https://formspree.io/f/xwvwygob', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data),
       })
         .then(function (response) {
           if (response.ok) {
