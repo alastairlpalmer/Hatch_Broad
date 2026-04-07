@@ -1,0 +1,154 @@
+/* ══════════════════════════════════════════════════
+   Hatch — Responsive Breakpoints
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  :root {
+    --section-pad-x: 36px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+
+  .hero-content { order: 1; }
+  .hero-visual { order: 2; justify-content: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-tel { justify-content: center; }
+  .hero-img-wrap { max-width: 380px; }
+
+  .benefits-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .food-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .food-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .faq-left { position: static; }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .value-driver {
+    width: 80%;
+    left: 10% !important;
+  }
+
+  .sustain-stats-row { grid-template-columns: 1fr; }
+
+  /* Hide custom cursor on tablets */
+  .cursor-dot,
+  .cursor-circle { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-pad-x: 24px;
+    --section-pad-y: 72px;
+  }
+
+  /* Mobile nav */
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--green-deep);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-links a {
+    font-size: 20px;
+    color: var(--cream);
+  }
+
+  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .sustain-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .food-grid { grid-template-columns: repeat(3, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-pad-x: 18px;
+    --section-pad-y: 56px;
+  }
+
+  .steps-grid { grid-template-columns: 1fr; }
+  .sectors-grid { grid-template-columns: 1fr; }
+  .food-grid { grid-template-columns: repeat(2, 1fr); }
+  .sustain-grid { grid-template-columns: 1fr; }
+  .benefits-tiles { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .value-driver {
+    width: 100%;
+    left: 0 !important;
+  }
+
+  .hero-h1 { letter-spacing: -1px; }
+
+  .stat-float-1 { bottom: auto; top: -16px; left: 10px; }
+  .stat-float-2 { top: auto; bottom: -16px; right: 10px; }
+
+  .image-break-inner img { height: 240px; }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  .cursor-dot,
+  .cursor-circle {
+    display: none !important;
+  }
+}
