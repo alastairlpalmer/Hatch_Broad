@@ -299,10 +299,10 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
 .hero {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: center;
-  padding: 110px var(--section-pad-x) 80px;
-  gap: 60px;
+  padding: 110px 32px 80px;
+  gap: 40px;
   background: var(--cream-20);
   position: relative;
   overflow: hidden;
@@ -440,13 +440,13 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
   justify-content: center;
 }
 
-.hero-img-wrap { width: 100%; max-width: 500px; }
+.hero-img-wrap { width: 100%; max-width: 600px; }
 
-.hero-img-wrap--large { max-width: 560px; }
+.hero-img-wrap--large { max-width: 720px; }
 
 .hero-img-wrap img {
   width: 100%;
-  border-radius: 24px;
+  border-radius: 20px;
   box-shadow: 0 40px 100px rgba(0, 70, 56, 0.2);
   object-fit: cover;
 }
