@@ -153,7 +153,7 @@
 
     // Image break with scale
     gsap.from('.image-break-inner', {
-      autoAlpha: 0, y: 60, scale: 0.97, duration: 1, ease: 'power2.out',
+      opacity: 0, y: 60, scale: 0.97, duration: 1, ease: 'power2.out',
       scrollTrigger: { trigger: '.image-break', start: 'top 85%', toggleActions: 'play none none none' },
     });
 
@@ -190,7 +190,7 @@
 
     // Fade in
     gsap.from(flipTiles, {
-      autoAlpha: 0,
+      opacity: 0,
       y: 24,
       duration: 0.5,
       stagger: 0.04,
@@ -219,15 +219,35 @@
       },
     });
 
-    // Hover: flip to text, unhover: flip back to image
-    flipTiles.forEach(function (tile) {
-      tile.addEventListener('mouseenter', function () {
-        tile.classList.add('flipped');
+    // Hover/tap: flip to text side, unhover/tap-away: flip back to image
+    var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (isTouchDevice) {
+      flipTiles.forEach(function (tile) {
+        tile.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var wasFlipped = tile.classList.contains('flipped');
+          // Unflip all first
+          flipTiles.forEach(function (t) { t.classList.remove('flipped'); });
+          // Toggle tapped tile
+          if (!wasFlipped) tile.classList.add('flipped');
+        });
       });
-      tile.addEventListener('mouseleave', function () {
-        tile.classList.remove('flipped');
+
+      // Tap outside any tile unflips all
+      document.addEventListener('click', function () {
+        flipTiles.forEach(function (t) { t.classList.remove('flipped'); });
       });
-    });
+    } else {
+      flipTiles.forEach(function (tile) {
+        tile.addEventListener('mouseenter', function () {
+          tile.classList.add('flipped');
+        });
+        tile.addEventListener('mouseleave', function () {
+          tile.classList.remove('flipped');
+        });
+      });
+    }
 
     // Pricing
     revealOnScroll('.pricing-section .section-tag');

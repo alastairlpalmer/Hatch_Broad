@@ -59,11 +59,34 @@
         var href = anchor.getAttribute('href');
         if (href === '#') return;
         e.preventDefault();
+
+        // Close mobile menu if open before scrolling
+        var ham = document.querySelector('.hamburger');
+        var nl = document.querySelector('.nav-links');
+        if (ham && ham.classList.contains('open')) {
+          ham.classList.remove('open');
+          nl.classList.remove('open');
+          ham.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+
+        // Ensure Lenis is running before scrolling
+        if (lenis && lenis.isStopped) lenis.start();
+
         var target = document.querySelector(href);
         if (target) {
           lenis.scrollTo(target, { offset: -70 });
         }
       });
+    });
+
+    // Refresh ScrollTrigger on orientation change / resize
+    var resizeTimeout;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function () {
+        ScrollTrigger.refresh();
+      }, 250);
     });
   }
 
