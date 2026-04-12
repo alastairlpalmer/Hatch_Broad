@@ -274,7 +274,7 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 4px;
+  padding: 14px 10px;
   z-index: 101;
 }
 
