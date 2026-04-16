@@ -95,12 +95,17 @@
       .to('.hero-actions', { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.2')
       .to('.hero-visual', { autoAlpha: 1, x: 0, scale: 1, duration: 1, ease: 'power2.out' }, '-=0.6');
 
-    // Parallax on hero image
-    gsap.to('.hero-img-wrap', {
-      y: -60,
-      ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
-    });
+    // Parallax on hero image — desktop only (scrub is expensive on mobile,
+    // and disabled when the user prefers reduced motion).
+    var skipScrub = window.matchMedia('(max-width: 768px)').matches ||
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!skipScrub) {
+      gsap.to('.hero-img-wrap', {
+        y: -60,
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+      });
+    }
   }
 
   /* ── Scroll Animations ── */
@@ -118,38 +123,48 @@
     revealOnScroll('.value-section .section-sub', { delay: 0.2 });
 
     // Each card scrolls from a starting y offset to 0, at its own rate.
-    gsap.utils.toArray('.value-driver').forEach(function (driver) {
-      var speed = parseFloat(driver.dataset.speed) || 0.7;
-      var startY = 60 * speed;
-      var endY = -40 * speed;
+    // On mobile (or when user prefers reduced motion), skip the per-frame
+    // scrub and use a simple fade-in reveal instead — 6 scrub triggers kill
+    // scroll smoothness on phones.
+    var skipScrubCards = window.matchMedia('(max-width: 768px)').matches ||
+                         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Scroll-driven drift
-      gsap.fromTo(driver,
-        { y: startY, autoAlpha: 0 },
-        {
-          y: endY,
-          autoAlpha: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: driver,
-            start: 'top 100%',
-            end: 'top 20%',
-            scrub: 0.6,
-          },
-        }
-      );
+    if (skipScrubCards) {
+      revealOnScroll('.value-driver', { stagger: 0.06 });
+    } else {
+      gsap.utils.toArray('.value-driver').forEach(function (driver) {
+        var speed = parseFloat(driver.dataset.speed) || 0.7;
+        var startY = 60 * speed;
+        var endY = -40 * speed;
 
-      // "Pop" when card reaches centre of viewport
-      ScrollTrigger.create({
-        trigger: driver,
-        start: 'top 65%',
-        end: 'bottom 35%',
-        onEnter: function () { driver.classList.add('vd-active'); },
-        onLeave: function () { driver.classList.remove('vd-active'); },
-        onEnterBack: function () { driver.classList.add('vd-active'); },
-        onLeaveBack: function () { driver.classList.remove('vd-active'); },
+        // Scroll-driven drift
+        gsap.fromTo(driver,
+          { y: startY, autoAlpha: 0 },
+          {
+            y: endY,
+            autoAlpha: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: driver,
+              start: 'top 100%',
+              end: 'top 20%',
+              scrub: 0.6,
+            },
+          }
+        );
+
+        // "Pop" when card reaches centre of viewport
+        ScrollTrigger.create({
+          trigger: driver,
+          start: 'top 65%',
+          end: 'bottom 35%',
+          onEnter: function () { driver.classList.add('vd-active'); },
+          onLeave: function () { driver.classList.remove('vd-active'); },
+          onEnterBack: function () { driver.classList.add('vd-active'); },
+          onLeaveBack: function () { driver.classList.remove('vd-active'); },
+        });
       });
-    });
+    }
 
     // Image break with scale
     gsap.from('.image-break-inner', {

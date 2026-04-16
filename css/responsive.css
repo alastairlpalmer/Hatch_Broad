@@ -89,11 +89,27 @@
     pointer-events: all;
   }
 
-  /* When the mobile menu is open, drop nav's backdrop-filter so it
-     no longer acts as a containing block for the fixed .nav-links overlay. */
+  /* Drop nav's backdrop-filter on mobile entirely — blur is GPU-expensive
+     on phones. Use a solid background instead. This also means the mobile
+     menu overlay is positioned relative to the viewport (no containing
+     block created by backdrop-filter). */
+  nav.nav--scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--green-deep);
+  }
+
+  /* Belt-and-braces: even in transitional states where nav--scrolled
+     hasn't been applied yet, opening the menu drops any residual blur. */
   nav:has(.nav-links.open) {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  /* Release persistent GPU layers on mobile — scrub parallax is disabled
+     in JS so will-change: transform is no longer earning its cost. */
+  .value-driver {
+    will-change: auto;
   }
 
   .nav-links a {

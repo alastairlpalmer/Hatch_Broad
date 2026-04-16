@@ -21,20 +21,62 @@
       }
     });
 
-    // Safety fallback — if animations don't fire, remove after 3s
+    // Safety fallback — if animations don't fire, remove after 1.2s
     setTimeout(function () {
       if (!loader.classList.contains('done')) {
         loader.classList.add('done');
         document.body.style.overflow = '';
       }
-    }, 3000);
+    }, 1200);
   }
 
   /* ── Lenis Smooth Scroll ── */
   var lenis;
 
+  function closeMobileMenu() {
+    var ham = document.querySelector('.hamburger');
+    var nl = document.querySelector('.nav-links');
+    if (ham && ham.classList.contains('open')) {
+      ham.classList.remove('open');
+      nl.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function bindAnchorsNative() {
+    // Native smooth-scroll fallback for touch devices (no Lenis)
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var href = anchor.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        closeMobileMenu();
+        var target = document.querySelector(href);
+        if (!target) return;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  }
+
   function initSmoothScroll() {
-    if (typeof Lenis === 'undefined') return;
+    // Refresh ScrollTrigger on orientation change / resize (both paths)
+    var resizeTimeout;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function () {
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      }, 250);
+    });
+
+    // On touch devices, skip Lenis entirely — native momentum scroll feels
+    // snappier and synthetic smoothing causes a "floaty/behind" sensation.
+    var isTouch = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+    if (isTouch || typeof Lenis === 'undefined') {
+      bindAnchorsNative();
+      return;
+    }
 
     lenis = new Lenis({
       lerp: 0.1,
@@ -53,40 +95,17 @@
     }
     requestAnimationFrame(raf);
 
-    // Anchor clicks
+    // Anchor clicks (Lenis path)
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (e) {
         var href = anchor.getAttribute('href');
         if (href === '#') return;
         e.preventDefault();
-
-        // Close mobile menu if open before scrolling
-        var ham = document.querySelector('.hamburger');
-        var nl = document.querySelector('.nav-links');
-        if (ham && ham.classList.contains('open')) {
-          ham.classList.remove('open');
-          nl.classList.remove('open');
-          ham.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        }
-
-        // Ensure Lenis is running before scrolling
-        if (lenis && lenis.isStopped) lenis.start();
-
+        closeMobileMenu();
+        if (lenis.isStopped) lenis.start();
         var target = document.querySelector(href);
-        if (target) {
-          lenis.scrollTo(target, { offset: -70 });
-        }
+        if (target) lenis.scrollTo(target, { offset: -70 });
       });
-    });
-
-    // Refresh ScrollTrigger on orientation change / resize
-    var resizeTimeout;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function () {
-        ScrollTrigger.refresh();
-      }, 250);
     });
   }
 
@@ -99,16 +118,12 @@
 
     if (!nav) return;
 
-    // Scroll shrink
+    // Scroll shrink — edge-triggered only, avoids per-frame classList writes
     ScrollTrigger.create({
       start: 80,
-      onUpdate: function (self) {
-        if (self.scroll() > 80) {
-          nav.classList.add('nav--scrolled');
-        } else {
-          nav.classList.remove('nav--scrolled');
-        }
-      },
+      end: 'max',
+      onEnter: function () { nav.classList.add('nav--scrolled'); },
+      onLeaveBack: function () { nav.classList.remove('nav--scrolled'); },
     });
 
     // Active link tracking
