@@ -89,6 +89,13 @@
     pointer-events: all;
   }
 
+  /* When the mobile menu is open, drop nav's backdrop-filter so it
+     no longer acts as a containing block for the fixed .nav-links overlay. */
+  nav:has(.nav-links.open) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .nav-links a {
     font-size: 20px;
     color: var(--cream);
@@ -183,5 +190,15 @@
   .cursor-dot,
   .cursor-circle {
     display: none !important;
+  }
+}
+
+/* Touch devices above the mobile breakpoint (landscape phones, tablets)
+   still show the desktop nav bar — bump the nav-cta to a 44px touch target. */
+@media (hover: none) and (min-width: 769px) {
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
