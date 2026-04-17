@@ -20,7 +20,7 @@
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
   .hero-tel { justify-content: center; }
-  .hero-img-wrap { max-width: 380px; }
+  .hero-img-wrap { max-width: 280px; }
 
   .benefits-split {
     grid-template-columns: 1fr;
@@ -179,10 +179,13 @@
   .hero-h1 { letter-spacing: -1px; }
   .section-tag { font-size: 12px; }
 
+  .hero-img-wrap { max-width: 220px; }
+
   .stat-float-1 { bottom: auto; top: -16px; left: 10px; }
   .stat-float-2 { top: auto; bottom: -16px; right: 10px; }
 
-  .image-break-inner img { height: 240px; }
+  .image-break-inner { padding: 32px 20px; }
+  .fridge-diagram { max-width: 340px; }
 
   .footer-bottom {
     flex-direction: column;

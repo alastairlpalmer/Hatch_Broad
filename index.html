@@ -357,7 +357,7 @@
   <div class="hero-visual">
     <!-- PHOTO: Main hero image of the Hatch smart fridge. Replace: images/hero/machine.jpg -->
     <div class="hero-img-wrap hero-img-wrap--large">
-      <img src="images/hero/machine.jpg" alt="Hatch smart fridge stocked with fresh meals in a premium London office" loading="eager" fetchpriority="high" decoding="async" width="2048" height="1152" data-folder="hero" onerror="this.classList.add('img-missing')" />
+      <img src="images/hero/machine.jpg" alt="Hatch smart fridge stocked with fresh meals in a premium London office" loading="eager" fetchpriority="high" decoding="async" width="1024" height="1536" data-folder="hero" onerror="this.classList.add('img-missing')" />
     </div>
   </div>
 </section>
@@ -454,10 +454,153 @@
 </section>
 
 <!-- ══════ IMAGE BREAK ══════ -->
-<!-- PHOTO: Full-width fridge-in-situ image. Replace: images/spaces/fridge-situ.jpg -->
+<!-- Scroll-animated line drawing of the Hatch fridge (front + side views). -->
 <section class="image-break">
   <div class="image-break-inner">
-    <img src="images/spaces/fridge-situ.jpg" alt="Hatch smart fridge installed in a modern London office lobby" loading="lazy" decoding="async" width="1600" height="1140" data-folder="spaces" onerror="this.classList.add('img-missing')" />
+    <svg class="fridge-diagram"
+         viewBox="0 0 2200 2200"
+         preserveAspectRatio="xMidYMid meet"
+         role="img"
+         aria-label="Hatch smart fridge technical diagram — front view 1105 mm wide by 1930 mm tall, side view 760 mm deep">
+
+      <!-- DIMENSION LINES + LABELS (fade in at end) -->
+      <g class="draw-fade" aria-hidden="true" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <!-- Top: 1105 mm over the front view -->
+        <line x1="220" y1="90" x2="1325" y2="90" />
+        <polyline points="245,72 220,90 245,108" />
+        <polyline points="1300,72 1325,90 1300,108" />
+        <line x1="220" y1="110" x2="220" y2="170" />
+        <line x1="1325" y1="110" x2="1325" y2="170" />
+
+        <!-- Top: 760 mm over the side view -->
+        <line x1="1425" y1="90" x2="2185" y2="90" />
+        <polyline points="1450,72 1425,90 1450,108" />
+        <polyline points="2160,72 2185,90 2160,108" />
+        <line x1="1425" y1="110" x2="1425" y2="170" />
+        <line x1="2185" y1="110" x2="2185" y2="170" />
+
+        <!-- Left: 1930 mm down the front view -->
+        <line x1="110" y1="180" x2="110" y2="2110" />
+        <polyline points="92,205 110,180 128,205" />
+        <polyline points="92,2085 110,2110 128,2085" />
+        <line x1="130" y1="180" x2="200" y2="180" />
+        <line x1="130" y1="2110" x2="200" y2="2110" />
+
+        <!-- Text labels -->
+        <text x="772" y="50" text-anchor="middle" font-size="58" font-family="'Inter', system-ui, -apple-system, sans-serif" fill="currentColor" stroke="none">1105 mm</text>
+        <text x="1805" y="50" text-anchor="middle" font-size="58" font-family="'Inter', system-ui, -apple-system, sans-serif" fill="currentColor" stroke="none">760 mm</text>
+        <text x="0" y="0" text-anchor="middle" font-size="58" font-family="'Inter', system-ui, -apple-system, sans-serif" fill="currentColor" stroke="none" transform="translate(60 1145) rotate(-90)">1930 mm</text>
+      </g>
+
+      <!-- DRAWING — strokes that draw in on scroll -->
+      <g class="draw" aria-hidden="true" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+        <!-- Front view outer cabinet -->
+        <rect x="220" y="180" width="1105" height="1930" rx="24" ry="24" pathLength="1"/>
+
+        <!-- Divider between control column and glass door -->
+        <line x1="500" y1="180" x2="500" y2="2110" pathLength="1"/>
+
+        <!-- Digital display panel (filled accent) -->
+        <rect class="display-fill" x="260" y="260" width="200" height="680" rx="10" ry="10" fill="var(--green-mid)" stroke="currentColor" pathLength="1"/>
+
+        <!-- Card reader -->
+        <rect x="298" y="1110" width="104" height="54" rx="6" ry="6" pathLength="1"/>
+        <!-- Coin slot -->
+        <rect x="290" y="1220" width="120" height="22" rx="8" ry="8" pathLength="1"/>
+
+        <!-- Door handle on glass door -->
+        <rect x="532" y="620" width="14" height="700" rx="7" ry="7" pathLength="1"/>
+
+        <!-- Shelf lines in glass area -->
+        <line x1="500" y1="540" x2="1325" y2="540" pathLength="1"/>
+        <line x1="500" y1="880" x2="1325" y2="880" pathLength="1"/>
+        <line x1="500" y1="1200" x2="1325" y2="1200" pathLength="1"/>
+        <line x1="500" y1="1520" x2="1325" y2="1520" pathLength="1"/>
+        <line x1="500" y1="1840" x2="1325" y2="1840" pathLength="1"/>
+
+        <!-- Meal trays — shelf 1 -->
+        <rect x="590" y="400" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <rect x="760" y="400" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <rect x="930" y="400" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <rect x="1100" y="400" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <!-- Meal trays — shelf 2 -->
+        <rect x="590" y="740" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <rect x="760" y="740" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <rect x="930" y="740" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+        <rect x="1100" y="740" width="150" height="110" rx="8" ry="8" pathLength="1"/>
+
+        <!-- Bottles — shelf 3 (y bottom = 1200) -->
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(0 210)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(110 210)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(220 210)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(330 210)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(440 210)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(550 210)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(660 210)" pathLength="1"/>
+        <!-- Bottle bodies shelf 3 -->
+        <rect x="572" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="682" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="792" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="902" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1012" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1122" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1232" y="1010" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+
+        <!-- Bottles — shelf 4 -->
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(0 530)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(110 530)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(220 530)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(330 530)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(440 530)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(550 530)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(660 530)" pathLength="1"/>
+        <rect x="572" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="682" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="792" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="902" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1012" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1122" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1232" y="1330" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+
+        <!-- Bottles — shelf 5 -->
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(0 850)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(110 850)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(220 850)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(330 850)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(440 850)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(550 850)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(660 850)" pathLength="1"/>
+        <rect x="572" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="682" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="792" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="902" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1012" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1122" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+        <rect x="1232" y="1650" width="56" height="190" rx="4" ry="4" pathLength="1"/>
+
+        <!-- Bottles — shelf 6 (bottom) -->
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(0 1170)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(110 1170)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(220 1170)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(330 1170)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(440 1170)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(550 1170)" pathLength="1"/>
+        <path d="M 574 990 v -10 q 0 -8 8 -8 h 8 v -26 q 0 -6 6 -6 h 22 q 6 0 6 6 v 26 h 8 q 8 0 8 8 v 10 z" transform="translate(660 1170)" pathLength="1"/>
+        <rect x="572" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+        <rect x="682" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+        <rect x="792" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+        <rect x="902" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+        <rect x="1012" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+        <rect x="1122" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+        <rect x="1232" y="1970" width="56" height="140" rx="4" ry="4" pathLength="1"/>
+
+        <!-- SIDE VIEW -->
+        <rect x="1425" y="180" width="760" height="1930" rx="24" ry="24" pathLength="1"/>
+        <!-- Door edge -->
+        <line x1="2125" y1="200" x2="2125" y2="2090" pathLength="1"/>
+      </g>
+    </svg>
   </div>
 </section>
 

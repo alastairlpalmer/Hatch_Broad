@@ -172,6 +172,45 @@
       scrollTrigger: { trigger: '.image-break', start: 'top 85%', toggleActions: 'play none none none' },
     });
 
+    // Fridge diagram — scroll-scrubbed stroke draw-in + dimension fade-in
+    var fridgeDiagram = document.querySelector('.fridge-diagram');
+    if (fridgeDiagram && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var diagramStrokes = fridgeDiagram.querySelectorAll('.draw path, .draw line, .draw rect, .draw polyline');
+      var diagramFades = fridgeDiagram.querySelectorAll('.draw-fade');
+
+      var drawTween = gsap.to(diagramStrokes, {
+        strokeDashoffset: 0,
+        duration: 1,
+        ease: 'none',
+        stagger: { each: 0.08, from: 'start' },
+        scrollTrigger: {
+          trigger: '.image-break',
+          start: 'top 85%',
+          end: 'bottom 35%',
+          scrub: 0.6,
+          onLeave: function () {
+            // Force-complete in case scrub lerp lags at the end
+            drawTween.progress(1);
+            fridgeDiagram.classList.add('is-drawn');
+          },
+          onEnterBack: function () {
+            fridgeDiagram.classList.remove('is-drawn');
+          },
+        },
+      });
+
+      gsap.to(diagramFades, {
+        opacity: 1,
+        ease: 'power1.out',
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: '.image-break',
+          start: 'top 55%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }
+
     // Sectors — individual pop-up on scroll
     revealOnScroll('.sectors-section .section-tag');
     revealOnScroll('.sectors-section .section-title', { delay: 0.1 });
