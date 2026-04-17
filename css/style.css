@@ -721,18 +721,14 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
    ══════════════════════════════════════════════════ */
 
 .image-break {
-  padding: 0 var(--section-pad-x);
-  background: var(--cream-20);
+  padding: 0;
+  background: var(--cream-60);
 }
 
 .image-break-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 48px clamp(20px, 4vw, 64px);
-  border-radius: var(--radius-lg);
-  background: var(--cream-60);
-  overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0, 70, 56, 0.12);
   color: var(--green-deep);
 }
 

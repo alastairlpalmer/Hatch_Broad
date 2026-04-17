@@ -172,25 +172,23 @@
       scrollTrigger: { trigger: '.image-break', start: 'top 85%', toggleActions: 'play none none none' },
     });
 
-    // Fridge diagram — scroll-scrubbed stroke draw-in + dimension fade-in
+    // Fridge diagram — pinned section with scroll-scrubbed stroke draw-in
     var fridgeDiagram = document.querySelector('.fridge-diagram');
     if (fridgeDiagram && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       var diagramStrokes = fridgeDiagram.querySelectorAll('.draw path, .draw line, .draw rect, .draw polyline');
       var diagramFades = fridgeDiagram.querySelectorAll('.draw-fade');
 
-      var drawTween = gsap.to(diagramStrokes, {
-        strokeDashoffset: 0,
-        duration: 1,
-        ease: 'none',
-        stagger: { each: 0.08, from: 'start' },
+      var drawTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: '.image-break',
-          start: 'top 85%',
-          end: 'bottom 35%',
-          scrub: 0.6,
+          start: 'center center',
+          end: '+=1400',
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.4,
+          anticipatePin: 1,
           onLeave: function () {
-            // Force-complete in case scrub lerp lags at the end
-            drawTween.progress(1);
+            drawTimeline.progress(1);
             fridgeDiagram.classList.add('is-drawn');
           },
           onEnterBack: function () {
@@ -199,16 +197,18 @@
         },
       });
 
-      gsap.to(diagramFades, {
-        opacity: 1,
-        ease: 'power1.out',
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: '.image-break',
-          start: 'top 55%',
-          toggleActions: 'play none none reverse',
-        },
-      });
+      drawTimeline
+        .to(diagramStrokes, {
+          strokeDashoffset: 0,
+          duration: 1,
+          ease: 'none',
+          stagger: { each: 0.08, from: 'start' },
+        })
+        .to(diagramFades, {
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power1.out',
+        }, '>-0.4');
     }
 
     // Sectors — individual pop-up on scroll
