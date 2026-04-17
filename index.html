@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,30 +10,60 @@
   <link rel="canonical" href="https://the-hatch.uk/" />
   <link rel="icon" type="image/png" href="images/brand/favicon.png" />
 
+  <!-- Performance hints -->
+  <link rel="preload" as="image" href="images/hero/machine.jpg" fetchpriority="high" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_GB" />
   <meta property="og:url" content="https://the-hatch.uk/" />
   <meta property="og:title" content="Hatch | Premium Workplace Food Solutions | London" />
   <meta property="og:description" content="Smart fridges stocked with chef-prepared meals, premium drinks and everyday essentials. Fully managed workplace food for offices and co-working spaces across London." />
-  <meta property="og:image" content="https://the-hatch.uk/images/hero/machine.jpg" />
+  <meta property="og:image" content="https://the-hatch.uk/images/brand/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Hatch smart fridge stocked with chef-prepared meals in a London office" />
   <meta property="og:site_name" content="Hatch" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://the-hatch.uk/" />
   <meta name="twitter:title" content="Hatch | Premium Workplace Food Solutions | London" />
   <meta name="twitter:description" content="Smart fridges stocked with chef-prepared meals, premium drinks and everyday essentials. Fully managed workplace food across London." />
-  <meta name="twitter:image" content="https://the-hatch.uk/images/hero/machine.jpg" />
+  <meta name="twitter:image" content="https://the-hatch.uk/images/brand/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Hatch smart fridge stocked with chef-prepared meals in a London office" />
+
+  <!-- Structured Data: WebSite (controls SERP site name) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://the-hatch.uk/#website",
+    "name": "Hatch",
+    "alternateName": ["The Hatch", "Hatch Digital"],
+    "url": "https://the-hatch.uk/",
+    "publisher": { "@id": "https://the-hatch.uk/#organization" },
+    "inLanguage": "en-GB"
+  }
+  </script>
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://the-hatch.uk/#organization",
     "name": "Hatch",
+    "alternateName": ["The Hatch", "Hatch Digital"],
     "legalName": "Hatch Digital Ltd",
     "url": "https://the-hatch.uk",
     "logo": "https://the-hatch.uk/images/brand/logo-horizontal-green.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/thehatch1/"
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+44-7742-180262",
@@ -45,31 +75,45 @@
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "London",
+      "postalCode": "W2 6HP",
       "addressCountry": "GB"
     }
   }
   </script>
 
-  <!-- Structured Data: LocalBusiness -->
+  <!-- Structured Data: FoodEstablishment (LocalBusiness subtype) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "FoodEstablishment",
+    "@id": "https://the-hatch.uk/#business",
     "name": "Hatch",
     "description": "Fully managed smart fridges stocked with chef-prepared meals, premium drinks and everyday essentials for workplaces across London.",
     "url": "https://the-hatch.uk",
+    "logo": "https://the-hatch.uk/images/brand/logo-horizontal-green.png",
+    "image": "https://the-hatch.uk/images/hero/machine.jpg",
     "telephone": "+44-7742-180262",
     "email": "info@the-hatch.uk",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "London",
+      "postalCode": "W2 6HP",
       "addressCountry": "GB"
     },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "07:00",
+      "closes": "22:00"
+    }],
     "areaServed": {
       "@type": "City",
       "name": "London"
     },
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.linkedin.com/company/thehatch1/"
+    ]
   }
   </script>
 
@@ -134,6 +178,130 @@
           "@type": "Answer",
           "text": "Hatch manages maintenance, service recovery and all issues directly. You don't need to lift a finger. This is our operation, not yours."
         }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Services by sector -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Managed Offices & Co-working Food Service",
+        "serviceType": "Workplace food service",
+        "provider": { "@id": "https://the-hatch.uk/#business" },
+        "areaServed": { "@type": "City", "name": "London" },
+        "description": "Co-working spaces and serviced offices across the City, Shoreditch, Mayfair and beyond. Give your members a reason to come in."
+      },
+      {
+        "@type": "Service",
+        "name": "University Campus Food Service",
+        "serviceType": "Campus food service",
+        "provider": { "@id": "https://the-hatch.uk/#business" },
+        "areaServed": { "@type": "City", "name": "London" },
+        "description": "Student unions, faculties and campus buildings. Accessible, quality food without the queues or staffing overhead."
+      },
+      {
+        "@type": "Service",
+        "name": "Residential Building Food Service",
+        "serviceType": "Residential amenity food service",
+        "provider": { "@id": "https://the-hatch.uk/#business" },
+        "areaServed": { "@type": "City", "name": "London" },
+        "description": "A premium amenity that differentiates your building and adds measurable value."
+      },
+      {
+        "@type": "Service",
+        "name": "Warehouses & Depots Food Service",
+        "serviceType": "Shift worker food service",
+        "provider": { "@id": "https://the-hatch.uk/#business" },
+        "areaServed": { "@type": "City", "name": "London" },
+        "description": "Shift workers deserve proper food. Hatch covers breakfast, lunch and late nights. No kitchen required."
+      },
+      {
+        "@type": "Service",
+        "name": "Studios & Creative Spaces Food Service",
+        "serviceType": "Studio food service",
+        "provider": { "@id": "https://the-hatch.uk/#business" },
+        "areaServed": { "@type": "City", "name": "London" },
+        "description": "Agencies, production companies and creative spaces that want provisions to match their culture and ambition."
+      },
+      {
+        "@type": "Service",
+        "name": "Healthcare & Admin Food Service",
+        "serviceType": "Healthcare food service",
+        "provider": { "@id": "https://the-hatch.uk/#business" },
+        "areaServed": { "@type": "City", "name": "London" },
+        "description": "Support teams who need fast, nutritious options during long and irregular shifts."
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://the-hatch.uk/"
+    }]
+  }
+  </script>
+
+  <!-- Structured Data: Menu -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Hatch Menu",
+    "description": "Chef-prepared meals, premium snacks, cold drinks and everyday essentials stocked in Hatch smart fridges across London.",
+    "provider": { "@id": "https://the-hatch.uk/#business" },
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Chef-prepared meals",
+        "description": "Freshly prepared hot meals, rotated weekly, with vegan, vegetarian, halal and gluten-free options.",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Chicken Katsu", "image": "https://the-hatch.uk/images/products/chicken-katsu.png" },
+          { "@type": "MenuItem", "name": "Red Thai Curry", "image": "https://the-hatch.uk/images/products/red-thai-curry.png" },
+          { "@type": "MenuItem", "name": "Lamb Rendang", "image": "https://the-hatch.uk/images/products/lamb-rendang.png" },
+          { "@type": "MenuItem", "name": "Chicken Korma", "image": "https://the-hatch.uk/images/products/korma.png" },
+          { "@type": "MenuItem", "name": "Harissa Chicken", "image": "https://the-hatch.uk/images/products/harissa-chicken.png" },
+          { "@type": "MenuItem", "name": "Spaghetti Bolognese", "image": "https://the-hatch.uk/images/products/spag-bol.png" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Snacks & treats",
+        "description": "High-protein bars and guilt-free treats from premium UK brands.",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Barebell Protein Bar", "image": "https://the-hatch.uk/images/products/barebell-choco.png" },
+          { "@type": "MenuItem", "name": "Misfits Protein Brownie", "image": "https://the-hatch.uk/images/products/misfits-brownie.png" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Drinks",
+        "description": "Smoothies, juices and cold drinks.",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Berry Boost Smoothie", "image": "https://the-hatch.uk/images/products/berry-boost.webp" },
+          { "@type": "MenuItem", "name": "Orange Juice", "image": "https://the-hatch.uk/images/products/orange-juice.webp" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Breakfast & essentials",
+        "description": "Breakfast options and everyday workplace essentials.",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Wolfys Porridge", "image": "https://the-hatch.uk/images/products/wolfys-porridge.png" },
+          { "@type": "MenuItem", "name": "Noosh Almond Butter", "image": "https://the-hatch.uk/images/products/noosh-classic.webp" }
+        ]
       }
     ]
   }
@@ -360,31 +528,31 @@
     <div class="food-grid">
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/chicken-katsu.png" alt="Chicken Katsu" loading="lazy" decoding="async" width="550" height="454" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/chicken-katsu.webp" /><img src="images/products/chicken-katsu.png" alt="Chicken Katsu" loading="lazy" decoding="async" width="550" height="454" /></picture></div>
           <div class="flip-back"><span>Chef-made meals</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/red-thai-curry.png" alt="Red Thai Curry" loading="lazy" decoding="async" width="612" height="408" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/red-thai-curry.webp" /><img src="images/products/red-thai-curry.png" alt="Red Thai Curry" loading="lazy" decoding="async" width="612" height="408" /></picture></div>
           <div class="flip-back"><span>50+ menu items</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/lamb-rendang.png" alt="Lamb Rendang" loading="lazy" decoding="async" width="576" height="433" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/lamb-rendang.webp" /><img src="images/products/lamb-rendang.png" alt="Lamb Rendang" loading="lazy" decoding="async" width="576" height="433" /></picture></div>
           <div class="flip-back"><span>Rotating weekly</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/barebell-choco.png" alt="Barebell Protein Bar" loading="lazy" decoding="async" width="500" height="500" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/barebell-choco.webp" /><img src="images/products/barebell-choco.png" alt="Barebell Protein Bar" loading="lazy" decoding="async" width="500" height="500" /></picture></div>
           <div class="flip-back"><span>Premium snacks</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/korma.png" alt="Chicken Korma" loading="lazy" decoding="async" width="612" height="408" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/korma.webp" /><img src="images/products/korma.png" alt="Chicken Korma" loading="lazy" decoding="async" width="612" height="408" /></picture></div>
           <div class="flip-back"><span>Vegan &amp; halal</span></div>
         </div>
       </div>
@@ -396,25 +564,25 @@
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/harissa-chicken.png" alt="Harissa Chicken" loading="lazy" decoding="async" width="612" height="408" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/harissa-chicken.webp" /><img src="images/products/harissa-chicken.png" alt="Harissa Chicken" loading="lazy" decoding="async" width="612" height="408" /></picture></div>
           <div class="flip-back"><span>High protein</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/misfits-brownie.png" alt="Misfits Protein Brownie" loading="lazy" decoding="async" width="500" height="500" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/misfits-brownie.webp" /><img src="images/products/misfits-brownie.png" alt="Misfits Protein Brownie" loading="lazy" decoding="async" width="500" height="500" /></picture></div>
           <div class="flip-back"><span>Guilt-free treats</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/wolfys-porridge.png" alt="Wolfys Porridge" loading="lazy" decoding="async" width="433" height="577" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/wolfys-porridge.webp" /><img src="images/products/wolfys-porridge.png" alt="Wolfys Porridge" loading="lazy" decoding="async" width="433" height="577" /></picture></div>
           <div class="flip-back"><span>Breakfast sorted</span></div>
         </div>
       </div>
       <div class="flip-tile">
         <div class="flip-inner">
-          <div class="flip-front"><img src="images/products/spag-bol.png" alt="Spaghetti Bolognese" loading="lazy" decoding="async" width="612" height="408" /></div>
+          <div class="flip-front"><picture><source type="image/webp" srcset="images/products/spag-bol.webp" /><img src="images/products/spag-bol.png" alt="Spaghetti Bolognese" loading="lazy" decoding="async" width="612" height="408" /></picture></div>
           <div class="flip-back"><span>Comfort classics</span></div>
         </div>
       </div>
@@ -699,6 +867,7 @@
         <div class="footer-contact">
           <a href="mailto:info@the-hatch.uk">info@the-hatch.uk</a>
           <a href="tel:+447742180262">+44 7742 180262</a>
+          <a href="https://www.linkedin.com/company/thehatch1/" target="_blank" rel="noopener" aria-label="Hatch on LinkedIn">LinkedIn</a>
         </div>
       </div>
       <div>
