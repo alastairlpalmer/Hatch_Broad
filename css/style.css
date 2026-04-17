@@ -1040,6 +1040,8 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
   border: 2px solid transparent;
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .price-card:hover {
@@ -1100,6 +1102,8 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
 .price-card.featured .price-desc { color: rgba(246, 240, 220, 0.65); }
 
 .price-feats { list-style: none; margin-bottom: 32px; }
+
+.price-btn { margin-top: auto; }
 
 .price-feats li {
   font-size: 13px;
