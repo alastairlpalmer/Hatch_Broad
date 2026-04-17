@@ -757,6 +757,15 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
   fill: var(--green-mid);
 }
 
+.fridge-diagram .display-logo {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.15s;
+}
+
+.fridge-diagram.is-drawn .display-logo {
+  opacity: 1;
+}
+
 .fridge-diagram .draw-fade {
   opacity: 0;
 }
@@ -770,6 +779,9 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
   }
   .fridge-diagram .draw .display-fill {
     fill: var(--green-mid);
+  }
+  .fridge-diagram .display-logo {
+    opacity: 1;
   }
   .fridge-diagram .draw-fade {
     opacity: 1;

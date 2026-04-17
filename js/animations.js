@@ -182,17 +182,27 @@
         scrollTrigger: {
           trigger: '.image-break',
           start: 'center center',
-          end: '+=1400',
+          end: '+=2600',
           pin: true,
           pinSpacing: true,
           scrub: 0.4,
           anticipatePin: 1,
+          onUpdate: function (self) {
+            // Toggle `is-drawn` as the drawing portion of the timeline finishes
+            // (~60% of the pinned scroll range). This shows the Hatch logo and
+            // green fill before the long tail pause.
+            if (self.progress > 0.6) {
+              fridgeDiagram.classList.add('is-drawn');
+            } else {
+              fridgeDiagram.classList.remove('is-drawn');
+            }
+          },
           onLeave: function () {
             drawTimeline.progress(1);
             fridgeDiagram.classList.add('is-drawn');
           },
           onEnterBack: function () {
-            fridgeDiagram.classList.remove('is-drawn');
+            // Handled by onUpdate's threshold check
           },
         },
       });
@@ -208,7 +218,11 @@
           opacity: 1,
           duration: 0.6,
           ease: 'power1.out',
-        }, '>-0.4');
+        }, '>-0.4')
+        // Empty tween to hold the fully-drawn diagram on screen for ~40% of
+        // the pinned scroll distance so the user can appreciate it before
+        // the section unpins.
+        .to({}, { duration: 5 });
     }
 
     // Sectors — individual pop-up on scroll
