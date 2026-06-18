@@ -952,6 +952,60 @@ nav.nav--scrolled .nav-logo img { height: 30px; }
 
 
 /* ══════════════════════════════════════════════════
+   IN SITU
+   ══════════════════════════════════════════════════ */
+
+.situ-section { background: var(--white); }
+
+.situ-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.situ-media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 70, 56, 0.16);
+}
+
+.situ-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1122 / 1402;
+  object-fit: cover;
+}
+
+.situ-points {
+  margin: 26px 0 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.situ-points li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 15px;
+  color: var(--warm-grey);
+  line-height: 1.6;
+}
+
+.situ-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green-mid) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F6F0DC' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+
+
+/* ══════════════════════════════════════════════════
    FOOD
    ══════════════════════════════════════════════════ */
 

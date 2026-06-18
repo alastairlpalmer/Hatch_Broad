@@ -35,6 +35,16 @@
     gap: 20px;
   }
 
+  .situ-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .situ-media {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
   .food-grid { grid-template-columns: repeat(3, 1fr); }
 
   .faq-layout {
