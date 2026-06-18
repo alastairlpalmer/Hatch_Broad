@@ -19,10 +19,11 @@ images/
 ## How to Swap the Hero Image
 
 1. Put your new image in the `images/hero/` folder
-2. Name it `machine.jpg` (replacing the existing one)
+2. Name it `fridge-office.jpg` (replacing the existing one)
 3. Refresh the page — done!
 
-**Recommended size:** 1400 x 800 pixels, JPG format
+**Recommended size:** portrait, around 1122 x 1402 pixels, JPG format
+(Keep it under ~250 KB so the page stays fast.)
 
 ---
 
@@ -52,10 +53,12 @@ images/
 ## How to Add a Space / Installation Photo
 
 1. Put your photo in `images/spaces/`
-2. To replace the main full-width image, name it `fridge-situ.jpg`
+2. To replace the "In Your Space" in-situ photo (next to the Sectors section),
+   name it `fridge-loft.jpg`
 3. Refresh the page
 
-**Recommended size:** 1400 x 800 pixels, JPG format
+**Recommended size:** portrait, around 1122 x 1402 pixels, JPG format
+(`fridge-situ.jpg` is an older unused shot kept for reference.)
 
 ---
 

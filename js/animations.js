@@ -245,6 +245,14 @@
       });
     });
 
+    // In Situ — image and copy slide in as the section enters view
+    revealOnScroll('.situ-media', { x: -40, y: 0 });
+    revealOnScroll('.situ-copy .section-tag', { delay: 0.1 });
+    revealOnScroll('.situ-copy .section-title', { delay: 0.15 });
+    revealOnScroll('.situ-copy .section-sub', { delay: 0.2 });
+    revealOnScroll('.situ-points', { delay: 0.25 });
+    revealOnScroll('.situ-copy .btn-primary', { delay: 0.3 });
+
     // Food — tiles start flipped (showing text back), then flip to reveal
     // images in random order as the grid scrolls into view.
     // Hover flips an individual tile back to show text, and unflip on leave.
